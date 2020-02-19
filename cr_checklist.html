@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <form>
+        <fieldset>
+            <h2>Area 51 Code Review Checklist<br>
+            </h2>
+            <p><b>Ensure all boxes are ticked before submitting your CR.</b></p>
+        </fieldset>
+
+        <fieldset>
+            <legend>Implementation</legend>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        This code does what it&#x27;s supposed to do.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        This solution is simple.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        The code is modular enough
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" >
+                        This code does not repeat a functionality that already exists in the codebase.
+                    </label>
+                </div>
+                <button type="button">Check all</button>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Errors and logging</legend>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        I can&#x27;t think of any case in which this code does not behave as it should.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        I can&#x27;t think of any inputs or external events that could break the code.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" >
+                        All logs were added.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" >
+                        Error messages are user-friendly.
+                    </label>
+                </div>
+                <button type="button">Check all</button>
+            </div>
+        </fieldset>
+
+
+        <fieldset>
+            <legend>Usability and dependencies</legend>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        Documentation or configuration files outside the code were updated accordingly (may not apply).
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        The code is easy to understand.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        Significant classes/methods have Javadoc.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        All comments that help understanding of the flow were added.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        There is no commented-out code.
+                    </label>
+                </div>
+                <button type="button">Check all</button>
+            </div>
+        </fieldset>
+
+        <fieldset>
+            <legend>Testing and testability</legend>
+            <div class="form-group">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        The code is testable.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        The code has enough automated tests.
+                    </label>
+                </div>
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox">
+                        Input or edge cases were included in the tests
+                    </label>
+                </div>
+                <button type="button">Check all</button>
+            </div>
+        </fieldset>
+    </form>
+    <br>
+    <label class="sape"></label>
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+    function assessAllChecked(){
+        if ($('input:checkbox:checked').length == $('input:checkbox').length) {
+            $(".sape").text("It's all good! You can now submit your code review.")
+        }
+        else{
+            $(".sape").text("")
+        }
+    }
+
+    function toggleAll(elem, isToCheck){
+        var ddiv = elem.parent("div");
+        ddiv.find("input").prop('checked', isToCheck);
+        assessAllChecked();
+
+    }
+
+    $("input").change(function(){
+        assessAllChecked();
+    });
+
+    $("button").click(function(){
+        var elem = $(this)
+        var ddiv = elem.parent("div");
+        var numOfUnchecked = ddiv.find("input:checkbox:not(':checked')").length
+        if(numOfUnchecked === 0){
+            toggleAll(elem, false)   
+        }
+        else{
+            toggleAll(elem, true)    
+        }
+    });
+</script>
+
+</html>
