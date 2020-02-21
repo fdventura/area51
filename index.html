@@ -1,5 +1,12 @@
 <!DOCTYPE html>
 <html>
+    <head>
+        <style>
+            img.success.hidden {
+              display: none;
+            }
+            </style>
+    </head>
 <body>
     <form>
         <fieldset>
@@ -9,7 +16,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Implementation</legend>
+            <legend><strong>Implementation</strong></legend>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
@@ -40,7 +47,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Errors and logging</legend>
+            <legend><strong>Errors and logging</strong></legend>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
@@ -72,7 +79,7 @@
 
 
         <fieldset>
-            <legend>Usability and dependencies</legend>
+            <legend><strong>Usability and dependencies</strong></legend>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
@@ -109,7 +116,7 @@
         </fieldset>
 
         <fieldset>
-            <legend>Testing and testability</legend>
+            <legend><strong>Testing and testability</strong></legend>
             <div class="form-group">
                 <div class="checkbox">
                     <label>
@@ -134,17 +141,23 @@
         </fieldset>
     </form>
     <br>
-    <label class="sape"></label>
+    <label class="success"></label>
+    <br>
+    <img class="success hidden" src="image1.gif">
+
 
 </body>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script>
     function assessAllChecked(){
         if ($('input:checkbox:checked').length == $('input:checkbox').length) {
-            $(".sape").text("It's all good! You can now submit your code review.")
+            $("label.success").text("It's all good! You can now submit your code review.")
+            $('img.success').removeClass('hidden')
         }
         else{
-            $(".sape").text("")
+            $("label.success").text("")
+            $('img.success').addClass('hidden')
+
         }
     }
 
